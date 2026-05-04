@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cetufksf80q54"]
+
+[ext_resource type="Script" uid="uid://b0pw0eey7yrpc" path="res://Scripts/main.gd" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://kw1bhmi2clc6" path="res://Scenes/level_01.tscn" id="2_jjvhh"]
+[ext_resource type="FontFile" uid="uid://c4gaktfhdbu2a" path="res://Art/Art/Other/Arizonia-Regular.ttf" id="3_kry3j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
+bg_color = Color(0.51051795, 0.1120433, 0.08295656, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+
+[node name="Main" type="Node2D" unique_id=145654464]
+script = ExtResource("1_8gbba")
+
+[node name="LevelRoot" parent="." unique_id=556920745 instance=ExtResource("2_jjvhh")]
+position = Vector2(-9, 0)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1527700183]
+
+[node name="ScoreLabel" type="Label" parent="HUD" unique_id=1520106394]
+offset_left = 560.0
+offset_top = 20.0
+offset_right = 720.0
+offset_bottom = 70.0
+theme_override_fonts/font = ExtResource("3_kry3j")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_1bvp3")
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fade" type="ColorRect" parent="HUD" unique_id=455940731]
+modulate = Color(1, 1, 1, 0.7294118)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.80973375, 0.72896737, 0.28752017, 1)
