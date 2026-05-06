@@ -1,12 +1,85 @@
 [gd_scene format=4 uid="uid://d14c8856doesk"]
 
 [ext_resource type="Texture2D" uid="uid://cj2m5whtfkkh2" path="res://Art/Art/Background/Blue.png" id="1_mmtoh"]
-[ext_resource type="Script" uid="uid://xlp58f6jwkrn" path="res://level_02.gd" id="1_q4l8i"]
 [ext_resource type="PackedScene" uid="uid://b30b7dekrfahj" path="res://Scenes/player.tscn" id="2_q4l8i"]
 [ext_resource type="Texture2D" uid="uid://5wjon051xoj2" path="res://Art/Art/Terrain/Terrain (16x16).png" id="3_h0jn1"]
 [ext_resource type="PackedScene" uid="uid://ddprc4u0v83jb" path="res://Scenes/snail.tscn" id="4_bbo2d"]
 [ext_resource type="PackedScene" uid="uid://76p0g762i764" path="res://Scenes/apple.tscn" id="5_i5ldb"]
 [ext_resource type="Texture2D" uid="uid://ducxuq2qkleq8" path="res://Art/Items/Checkpoints/Checkpoint/Checkpoint (Flag Idle)(64x64).png" id="6_oxvi3"]
+
+[sub_resource type="GDScript" id="GDScript_mmtoh"]
+script/source = "extends Node2D
+var score: int = 0
+var level:int = 1
+var current_level_root: Node = null
+
+func _ready() -> void:
+	#_setup_level()
+	fade = $HUD/Fade
+	fade.modulate.a = 1.0
+	current_level_root = get_node(\"LevelRoot\")
+	_load_level(level, ture, false)
+	#------------------------
+	# Event Handles
+	#------------------------
+func _process(delta: float) -> void:
+	pass
+	
+func _load_level(level_number:int, first_load:bool) -> void:
+	# fade first_load:
+	if not first_load:
+		await _fade(1.0)
+	if reset_score:
+		score = 0
+		$HUD/scoreLabel.text = \"score: \" + Str(score)
+	if current_level_root:
+		current_level_root.queue_free()
+		#change level
+	var level_path =\"res://Scenes/level_0%s.tscn\"%level_number
+	current_level_root = load(level_path).instantiate()
+	add_child(current_level_root)
+	current_level_root.name = \"LevelRoot\"
+	_setup_level(current_level_root)
+	#Fade in
+	await _fade(0.0)
+	
+func _on_player_died(body):
+	print(body.get_name() + \" killed!!!!\")
+	body.die()
+	await _load_level(level, false, true)
+func _setup_level() -> void:
+	var exit = current_level_root.get_node_or_null(\"Exit\")
+	if exit:
+		exit.body_entered.connect(_on_exit_body_entered)
+		#connect Apples
+	var apples = current_level_root.get_node_or_null(\"Apples\")
+	if apples:
+		for apple in apples.get_children():
+			apple.collected.connect(increase_score)
+	var enemies = $LevelRoot.get_node_or_null(\"Enemies\")
+	if enemies:
+		for enemy in enemies.get_children():
+			enemy.player_died.connect(_on_player_died)
+			
+	
+	
+func increase_score() -> void:
+	score += 1
+	print(score)
+	#peint(score)
+	$HUD/ScoreLabel.text = \"Score: %s\" % score
+func _on_exit_body_entered(body: Node2D) -> void:
+	if body.name == \"Player\":
+	level +=1
+	print(\"Body: \" + body.name + \"\\nLevel: \" + str(level))
+	body.can_move = false
+	await _load_level(level, false, false)
+func _fade(to_alpha: float) -> void:
+	var tween := create_tween()
+	tween.tween_property(fade, \"modulate:a\", to_alpha, 1.5)
+	await tween.finished
+	
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ndhg3"]
 texture = ExtResource("3_h0jn1")
@@ -305,10 +378,6 @@ occlusion_layer_1/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ndhg3")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ae7j8"]
-atlas = ExtResource("6_oxvi3")
-region = Rect2(0, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_q30kq"]
 atlas = ExtResource("6_oxvi3")
 region = Rect2(64, 0, 64, 64)
@@ -316,6 +385,10 @@ region = Rect2(64, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rf8af"]
 atlas = ExtResource("6_oxvi3")
 region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae7j8"]
+atlas = ExtResource("6_oxvi3")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wedvm"]
 atlas = ExtResource("6_oxvi3")
@@ -349,13 +422,13 @@ region = Rect2(576, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ae7j8")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_q30kq")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rf8af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae7j8")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wedvm")
@@ -387,7 +460,7 @@ animations = [{
 size = Vector2(10.499996, 23.166668)
 
 [node name="LevelRoot" type="Node2D" unique_id=556920745]
-script = ExtResource("1_q4l8i")
+script = SubResource("GDScript_mmtoh")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1995358201]
 offset_right = 1280.0
@@ -402,7 +475,7 @@ position = Vector2(-158, 155)
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=297454679]
 position = Vector2(5, 0)
 scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAgAAAABAAAAAAABAAgAAAACAAAAAAABAAgAAAADAAAAAAABAAgAAAAEAAAAAAABAAgAAAAFAAAAAAABAAgAAAAGAAAAAAABAAgAAAAHAAAAAAABAAgAAAAIAAAAAAABAAgAAAAJAAAAAAABAAgAAAAKAAAAAAABAAgAAAALAAAAAAABAAgAAAAMAAAAAAABAAgAAAANAAAAAAABAAgAAAAOAAAAAAABAAgAAAAPAAAAAAABAAgAAAAQAAAAAAABAAgAAAARAAAAAAABAAgAAAASAAAAAAABAAgAAAATAAAAAAABAAgAAAAUAAAAAAABAAgAAAAVAAAAAAABAAgAAAAWAAAAAAABAAgAAAAXAAAAAAABAAgAAAAYAAAAAAABAAgAAAAZAAAAAAABAAgAAAAAAAEAAAAAAAUAAAAAAAIAAAAAAAUAAAAAAAMAAAAAAAUAAAAAAAQAAAAAAAUAAAAAAAUAAAAAAAUAAAAAAAYAAAAAAAUAAAAAAAcAAAAAAAUAAAAAAAgAAAAAAAUAAAAAAAkAAAAAAAUAAAAAAAoAAAAAAAUAAAAAAAsAAAAAAAUAAAAAAAwAAAAAAAUAAAAAAA0AAAAAAAUAAAAaAAEAAAACAAUAAAAaAAcAAAACAAUAAAAaAAgAAAACAAUAAAAaAAkAAAACAAUAAAAaAAoAAAACAAUAAAAaAAsAAAACAAUAAAAaAAwAAAACAAUAAAAaAA0AAAACAAUAAAAAAA4AAAAAAAYAAAABAA4AAAABAAYAAAACAA4AAAABAAYAAAADAA4AAAABAAYAAAAEAA4AAAABAAYAAAAFAA4AAAABAAYAAAAGAA4AAAABAAYAAAAHAA4AAAABAAYAAAAIAA4AAAABAAYAAAAJAA4AAAABAAYAAAAKAA4AAAABAAYAAAALAA4AAAABAAYAAAAMAA4AAAABAAYAAAANAA4AAAABAAYAAAAOAA4AAAABAAYAAAAPAA4AAAABAAYAAAAQAA4AAAABAAYAAAARAA4AAAABAAYAAAASAA4AAAABAAYAAAATAA4AAAABAAYAAAAUAA4AAAABAAYAAAAVAA4AAAABAAYAAAAWAA4AAAABAAYAAAAXAA4AAAABAAYAAAAYAA4AAAABAAYAAAAZAA4AAAABAAYAAAAaAA4AAAACAAYAAAAaAAAAAAACAAgAAAABAA0AAAAHAAUAAAACAA0AAAAHAAUAAAADAA0AAAAHAAUAAAABAAwAAAAHAAUAAAABAAsAAAAHAAUAAAACAAwAAAAHAAUAAAADAAwAAAAHAAUAAAAEAA0AAAAHAAUAAAAFAAcAAAARAAkAAAAHAAUAAAARAAkAAAAMAAkAAAARAAkAAAAPAAwAAAARAAkAAAAGAAYAAAAHAAUAAAAIAAQAAAAHAAUAAAAPAAsAAAAMAAkAAAAPAA0AAAAMAAkAAAAKAAQAAAATAAAAAAALAAQAAAATAAAAAAAMAAUAAAATAAAAAAAOAAYAAAATAAAAAAAGAAwAAAATAAAAAAABAAEAAAATAAAAAAACAAEAAAATAAAAAAADAAEAAAATAAAAAAAEAAEAAAATAAAAAAAFAAEAAAATAAAAAAAGAAEAAAATAAAAAAAHAAEAAAATAAAAAAAIAAEAAAATAAAAAAAJAAEAAAATAAAAAAAKAAEAAAATAAAAAAALAAEAAAATAAAAAAAMAAEAAAATAAAAAAANAAEAAAATAAAAAAAOAAEAAAATAAAAAAAPAAEAAAATAAAAAAAQAAEAAAATAAAAAAARAAEAAAATAAAAAAASAAEAAAATAAAAAAATAAEAAAATAAAAAAAUAAEAAAATAAAAAAAVAAEAAAATAAAAAAAWAAEAAAATAAAAAAAXAAEAAAATAAAAAAAYAAEAAAATAAAAAAAZAAEAAAATAAAAAAAOAAwAAAATAAAAAAAQAAwAAAATAAAAAAAaAAYAAAACAAUAAAAaAAIAAAACAAUAAAAWAAgAAAAHAAUAAAAWAAcAAAAHAAUAAAAXAAcAAAAHAAUAAAAYAAYAAAAHAAUAAAAZAAYAAAAHAAUAAAAZAAcAAAAHAAUAAAAVAAgAAAAHAAUAAAATAAgAAAAHAAUAAAASAAkAAAAHAAUAAAAUAAoAAAAHAAUAAAAIAAgAAAAHAAUAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAgAAAABAAAAAAABAAgAAAACAAAAAAABAAgAAAADAAAAAAABAAgAAAAEAAAAAAABAAgAAAAFAAAAAAABAAgAAAAGAAAAAAABAAgAAAAHAAAAAAABAAgAAAAIAAAAAAABAAgAAAAJAAAAAAABAAgAAAAKAAAAAAABAAgAAAALAAAAAAABAAgAAAAMAAAAAAABAAgAAAANAAAAAAABAAgAAAAOAAAAAAABAAgAAAAPAAAAAAABAAgAAAAQAAAAAAABAAgAAAARAAAAAAABAAgAAAASAAAAAAABAAgAAAATAAAAAAABAAgAAAAUAAAAAAABAAgAAAAVAAAAAAABAAgAAAAWAAAAAAABAAgAAAAXAAAAAAABAAgAAAAYAAAAAAABAAgAAAAZAAAAAAABAAgAAAAAAAEAAAAAAAUAAAAAAAIAAAAAAAUAAAAAAAMAAAAAAAUAAAAAAAQAAAAAAAUAAAAAAAUAAAAAAAUAAAAAAAYAAAAAAAUAAAAAAAcAAAAAAAUAAAAAAAgAAAAAAAUAAAAAAAkAAAAAAAUAAAAAAAoAAAAAAAUAAAAAAAsAAAAAAAUAAAAAAAwAAAAAAAUAAAAAAA0AAAAAAAUAAAAaAAEAAAACAAUAAAAaAAcAAAACAAUAAAAaAAgAAAACAAUAAAAaAAkAAAACAAUAAAAaAAoAAAACAAUAAAAaAAsAAAACAAUAAAAaAAwAAAACAAUAAAAaAA0AAAACAAUAAAAAAA4AAAAAAAYAAAABAA4AAAABAAYAAAACAA4AAAABAAYAAAADAA4AAAABAAYAAAAEAA4AAAABAAYAAAAFAA4AAAABAAYAAAAGAA4AAAABAAYAAAAHAA4AAAABAAYAAAAIAA4AAAABAAYAAAAJAA4AAAABAAYAAAAKAA4AAAABAAYAAAALAA4AAAABAAYAAAAMAA4AAAABAAYAAAANAA4AAAABAAYAAAAOAA4AAAABAAYAAAAPAA4AAAABAAYAAAAQAA4AAAABAAYAAAARAA4AAAABAAYAAAASAA4AAAABAAYAAAATAA4AAAABAAYAAAAUAA4AAAABAAYAAAAVAA4AAAABAAYAAAAWAA4AAAABAAYAAAAXAA4AAAABAAYAAAAYAA4AAAABAAYAAAAZAA4AAAABAAYAAAAaAA4AAAACAAYAAAAaAAAAAAACAAgAAAABAA0AAAAHAAUAAAACAA0AAAAHAAUAAAADAA0AAAAHAAUAAAABAAwAAAAHAAUAAAABAAsAAAAHAAUAAAACAAwAAAAHAAUAAAADAAwAAAAHAAUAAAAEAA0AAAAHAAUAAAAMAAkAAAARAAkAAAAPAAwAAAARAAkAAAAPAAsAAAAMAAkAAAAPAA0AAAAMAAkAAAAGAAwAAAATAAAAAAABAAEAAAATAAAAAAACAAEAAAATAAAAAAADAAEAAAATAAAAAAAEAAEAAAATAAAAAAAFAAEAAAATAAAAAAAGAAEAAAATAAAAAAAHAAEAAAATAAAAAAAIAAEAAAATAAAAAAAJAAEAAAATAAAAAAAKAAEAAAATAAAAAAALAAEAAAATAAAAAAAMAAEAAAATAAAAAAANAAEAAAATAAAAAAAOAAEAAAATAAAAAAAPAAEAAAATAAAAAAAQAAEAAAATAAAAAAARAAEAAAATAAAAAAASAAEAAAATAAAAAAATAAEAAAATAAAAAAAUAAEAAAATAAAAAAAVAAEAAAATAAAAAAAWAAEAAAATAAAAAAAXAAEAAAATAAAAAAAYAAEAAAATAAAAAAAZAAEAAAATAAAAAAAOAAwAAAATAAAAAAAQAAwAAAATAAAAAAAaAAYAAAACAAUAAAAaAAIAAAACAAUAAAAIAAgAAAAHAAUAAAAEAAoAAAARAAkAAAAGAAgAAAAHAAUAAAADAAYAAAARAAkAAAAFAAQAAAAHAAUAAAAHAAMAAAAHAAgAAAASAAkAAAAHAAgAAAAWAAgAAAAHAAgAAAAYAAYAAAAHAAgAAAA=")
 tile_set = SubResource("TileSet_4d4qa")
 
 [node name="Enemies" type="Node2D" parent="." unique_id=497610453]
@@ -435,7 +508,7 @@ position = Vector2(431, 657)
 
 [node name="Flag" type="AnimatedSprite2D" parent="." unique_id=288822363]
 texture_filter = 1
-position = Vector2(1196, 192)
+position = Vector2(1253, 188)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6root")
 autoplay = "default"
