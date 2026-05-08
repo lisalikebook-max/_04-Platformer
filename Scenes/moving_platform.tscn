@@ -6,7 +6,7 @@
 size = Vector2(144, 48)
 
 [sub_resource type="Animation" id="Animation_tdwu5"]
-length = 0.001
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -60,3 +60,4 @@ shape = SubResource("RectangleShape2D_anqd2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D" unique_id=440276253]
 libraries/ = SubResource("AnimationLibrary_odsga")
+autoplay = &"move"

@@ -424,12 +424,6 @@ position = Vector2(982, 362)
 [node name="Apple4" parent="Apples" unique_id=767129972 instance=ExtResource("5_mn87n")]
 position = Vector2(608, 588)
 
-[node name="Apple5" parent="Apples" unique_id=591010378 instance=ExtResource("5_mn87n")]
-position = Vector2(973, 657)
-
-[node name="Apple6" parent="Apples" unique_id=375138557 instance=ExtResource("5_mn87n")]
-position = Vector2(431, 657)
-
 [node name="Flag" type="AnimatedSprite2D" parent="." unique_id=288822363]
 texture_filter = 1
 position = Vector2(1196, 192)

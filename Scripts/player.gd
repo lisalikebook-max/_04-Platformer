@@ -41,3 +41,7 @@ func die() -> void:
 	$DeathSound.play()
 	$AnimatedSprite2D.animation = "hit"
 	alive = false
+
+
+func _on_snail_player_died() -> void:
+	pass # Replace with function body.

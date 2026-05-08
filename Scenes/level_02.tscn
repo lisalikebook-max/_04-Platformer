@@ -417,7 +417,7 @@ position = Vector2(585, 636)
 [node name="Apples" type="Node2D" parent="." unique_id=2010572427]
 
 [node name="Apple" parent="Apples" unique_id=482916234 instance=ExtResource("5_i5ldb")]
-position = Vector2(1131, 584)
+position = Vector2(899, 405)
 
 [node name="Apple2" parent="Apples" unique_id=1171792412 instance=ExtResource("5_i5ldb")]
 position = Vector2(610, 411)
@@ -429,10 +429,10 @@ position = Vector2(982, 362)
 position = Vector2(608, 588)
 
 [node name="Apple5" parent="Apples" unique_id=591010378 instance=ExtResource("5_i5ldb")]
-position = Vector2(973, 657)
+position = Vector2(741, 395)
 
 [node name="Apple6" parent="Apples" unique_id=375138557 instance=ExtResource("5_i5ldb")]
-position = Vector2(431, 657)
+position = Vector2(761, 514)
 
 [node name="Flag" type="AnimatedSprite2D" parent="." unique_id=288822363]
 texture_filter = 1
