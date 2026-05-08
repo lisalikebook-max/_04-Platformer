@@ -60,14 +60,14 @@ func increase_score() -> void:
 	#peint(score)
 	$HUD/ScoreLabel.text = "Score: %s" % score
 	##
-func _on_exit_body_entered(body: Node2D) -> void:
+func _on_exit_body_entered(body: Node2D) -> void: 
 	if body.name == "Player":
 		level +=1
 		print("Body: " + body.name + "\nLevel: " + str(level))
 		body.can_move = false
 		await _load_level(level, false, false)
 		
-		#
+		
 func _fade(to_alpha: float) -> void:
 	var tween := create_tween()
 	tween.tween_property(fade, "modulate:a", to_alpha, 1.5)
