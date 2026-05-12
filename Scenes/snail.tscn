@@ -1,109 +1,77 @@
 [gd_scene format=3 uid="uid://ddprc4u0v83jb"]
 
-[ext_resource type="Texture2D" uid="uid://c3f0e4pptc3xj" path="res://_04-Platformer/assets/images/Snail/Walk (38x24).png" id="1_03g26"]
 [ext_resource type="Script" uid="uid://1p518nwj0xbs" path="res://Scripts/snail.gd" id="1_kwcx3"]
+[ext_resource type="Texture2D" uid="uid://cd6sy47obhhem" path="res://Art/Art/Items/images.png" id="2_qjijy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kwcx3"]
-atlas = ExtResource("1_03g26")
-region = Rect2(0, 0, 38, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnba0"]
+atlas = ExtResource("2_qjijy")
+region = Rect2(1, 1, 65, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_insh8"]
-atlas = ExtResource("1_03g26")
-region = Rect2(38, 0, 38, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_casb8"]
+atlas = ExtResource("2_qjijy")
+region = Rect2(66, 1, 65, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4w31b"]
-atlas = ExtResource("1_03g26")
-region = Rect2(76, 0, 38, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqs8f"]
+atlas = ExtResource("2_qjijy")
+region = Rect2(131, 1, 65, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_58xrm"]
-atlas = ExtResource("1_03g26")
-region = Rect2(114, 0, 38, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dokh"]
+atlas = ExtResource("2_qjijy")
+region = Rect2(196, 1, 65, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mr66v"]
-atlas = ExtResource("1_03g26")
-region = Rect2(152, 0, 38, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyufb"]
+atlas = ExtResource("2_qjijy")
+region = Rect2(261, 1, 65, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fc0et"]
-atlas = ExtResource("1_03g26")
-region = Rect2(190, 0, 38, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k75rl"]
-atlas = ExtResource("1_03g26")
-region = Rect2(228, 0, 38, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1henu"]
-atlas = ExtResource("1_03g26")
-region = Rect2(266, 0, 38, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kyqmk"]
-atlas = ExtResource("1_03g26")
-region = Rect2(304, 0, 38, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xnlcv"]
-atlas = ExtResource("1_03g26")
-region = Rect2(342, 0, 38, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdrdu"]
+atlas = ExtResource("2_qjijy")
+region = Rect2(326, 1, 65, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cumd5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kwcx3")
+"texture": SubResource("AtlasTexture_fnba0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_insh8")
+"texture": SubResource("AtlasTexture_casb8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4w31b")
+"texture": SubResource("AtlasTexture_uqs8f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_58xrm")
+"texture": SubResource("AtlasTexture_5dokh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mr66v")
+"texture": SubResource("AtlasTexture_cyufb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fc0et")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k75rl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1henu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kyqmk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xnlcv")
+"texture": SubResource("AtlasTexture_qdrdu")
 }],
 "loop": true,
 "name": &"run ",
-"speed": 20.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03g26"]
-size = Vector2(109, 43)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kwcx3"]
-radius = 31.0
+size = Vector2(88, 87)
 
 [node name="Snail" type="Area2D" unique_id=685463853]
 script = ExtResource("1_kwcx3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=702023621]
 texture_filter = 1
-scale = Vector2(3, 3)
+position = Vector2(-11.375001, 52.999992)
+scale = Vector2(1.2730769, 0.96874994)
 sprite_frames = SubResource("SpriteFrames_cumd5")
 animation = &"run "
 autoplay = "run "
+frame_progress = 0.38921905
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1501870171]
-position = Vector2(10.5, 12.5)
+position = Vector2(-14, 50.5)
 shape = SubResource("RectangleShape2D_03g26")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=80774450]
-position = Vector2(20, 1)
-shape = SubResource("CircleShape2D_kwcx3")
 
 [node name="TurnTimer" type="Timer" parent="." unique_id=2071444267]
 wait_time = 2.0

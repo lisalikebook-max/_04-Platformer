@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://kw1bhmi2clc6"]
 
-[ext_resource type="Texture2D" uid="uid://cj2m5whtfkkh2" path="res://Art/Art/Background/Blue.png" id="1_4d4qa"]
+[ext_resource type="Texture2D" uid="uid://ca6dq3ct35gqj" path="res://Art/Art/Background/unnamed.jpg" id="1_avkje"]
 [ext_resource type="PackedScene" uid="uid://b30b7dekrfahj" path="res://Scenes/player.tscn" id="1_ndhg3"]
 [ext_resource type="Texture2D" uid="uid://5wjon051xoj2" path="res://Art/Art/Terrain/Terrain (16x16).png" id="1_qayhv"]
 [ext_resource type="PackedScene" uid="uid://ddprc4u0v83jb" path="res://Scenes/snail.tscn" id="4_e5u8s"]
@@ -393,7 +393,7 @@ script = SubResource("GDScript_avkje")
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1995358201]
 offset_right = 1280.0
 offset_bottom = 718.0
-texture = ExtResource("1_4d4qa")
+texture = ExtResource("1_avkje")
 stretch_mode = 1
 
 [node name="Player" parent="." unique_id=148824676 instance=ExtResource("1_ndhg3")]
@@ -408,30 +408,30 @@ tile_set = SubResource("TileSet_4d4qa")
 [node name="Enemies" type="Node2D" parent="." unique_id=497610453]
 
 [node name="Snail" parent="Enemies" unique_id=1842907510 instance=ExtResource("4_e5u8s")]
-position = Vector2(1094, 637)
+position = Vector2(1058, 576)
 
 [node name="Snail2" parent="Enemies" unique_id=685463853 instance=ExtResource("4_e5u8s")]
-position = Vector2(585, 636)
+position = Vector2(475, 574)
 
 [node name="Apples" type="Node2D" parent="." unique_id=2010572427]
 
 [node name="Apple" parent="Apples" unique_id=482916234 instance=ExtResource("5_rix17")]
-position = Vector2(1131, 584)
+position = Vector2(859, 341)
 
 [node name="Apple2" parent="Apples" unique_id=1171792412 instance=ExtResource("5_rix17")]
-position = Vector2(610, 411)
+position = Vector2(606, 393)
 
 [node name="Apple3" parent="Apples" unique_id=1384472634 instance=ExtResource("5_rix17")]
-position = Vector2(982, 362)
+position = Vector2(981, 342)
 
 [node name="Apple4" parent="Apples" unique_id=767129972 instance=ExtResource("5_rix17")]
 position = Vector2(608, 588)
 
 [node name="Apple5" parent="Apples" unique_id=591010378 instance=ExtResource("5_rix17")]
-position = Vector2(973, 657)
+position = Vector2(755, 493)
 
 [node name="Apple6" parent="Apples" unique_id=375138557 instance=ExtResource("5_rix17")]
-position = Vector2(431, 657)
+position = Vector2(181, 338)
 
 [node name="Flag" type="AnimatedSprite2D" parent="." unique_id=288822363]
 texture_filter = 1
