@@ -340,10 +340,10 @@ script = ExtResource("1_fkybt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=716405881]
 texture_filter = 1
-position = Vector2(209.10153, 302.21725)
-scale = Vector2(0.6329091, 0.632898)
+position = Vector2(221.22592, 301.48404)
+scale = Vector2(1.2820909, 1.7185495)
 sprite_frames = SubResource("SpriteFrames_b88wv")
-animation = &"jump"
+animation = &"hit"
 autoplay = "run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=952838078]
