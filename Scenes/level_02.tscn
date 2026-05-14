@@ -391,10 +391,10 @@ size = Vector2(10.499996, 23.166668)
 script = SubResource("GDScript_mmtoh")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1995358201]
-offset_left = -469.0
-offset_top = -52.464478
-offset_right = 1691.0
-offset_bottom = 934.0
+offset_left = -640.0
+offset_top = -375.0
+offset_right = 1892.0
+offset_bottom = 795.0
 texture = ExtResource("1_mmtoh")
 stretch_mode = 1
 

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dxr5h4t3w3fj5"]
+
+[ext_resource type="Texture2D" uid="uid://bvtqc6egyre2" path="res://Art/Art/Background/IMG_3306.jpeg" id="1_mvnqu"]
+
+[node name="LevelRoot" unique_id=556920745]
+
+[node name="TextureRect" parent="." index="0" unique_id=1995358201]
+offset_left = 17.0
+offset_top = 25.0
+offset_right = 1322.0
+offset_bottom = 1025.0
+texture = ExtResource("1_mvnqu")
