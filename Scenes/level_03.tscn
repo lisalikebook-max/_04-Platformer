@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ddprc4u0v83jb" path="res://Scenes/snail.tscn" id="4_wj7o5"]
 [ext_resource type="PackedScene" uid="uid://76p0g762i764" path="res://Scenes/apple.tscn" id="5_mn87n"]
 [ext_resource type="Texture2D" uid="uid://ducxuq2qkleq8" path="res://Art/Items/Checkpoints/Checkpoint/Checkpoint (Flag Idle)(64x64).png" id="6_4ve4b"]
+[ext_resource type="PackedScene" uid="uid://dkbfsfr0uo31v" path="res://Scenes/moving_platform.tscn" id="7_ckw4o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ndhg3"]
 texture = ExtResource("3_gyxvk")
@@ -439,3 +440,9 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=993917616]
 position = Vector2(-1.0833282, 0.5833359)
 shape = SubResource("RectangleShape2D_0i62b")
+
+[node name="MovingPlatform" parent="." unique_id=1110423833 instance=ExtResource("7_ckw4o")]
+position = Vector2(425, 480)
+
+[node name="MovingPlatform2" parent="." unique_id=1884249146 instance=ExtResource("7_ckw4o")]
+position = Vector2(513, 260)
