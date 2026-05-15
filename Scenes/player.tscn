@@ -5,8 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b7flcr45dmu3x" path="res://Art/Art/Main Characters/Pink Man/Idle (32x32).png" id="2_sweqy"]
 [ext_resource type="Texture2D" uid="uid://b0w26qkr2er8s" path="res://Art/Art/Main Characters/IMG_3311-removebg-preview.png" id="4_3smsa"]
 [ext_resource type="Texture2D" uid="uid://bws6kd6jv4ert" path="res://Art/Art/Main Characters/E67E50A9-9868-4364-A059-9514FDECDD70-removebg-preview (1).png" id="5_8erm5"]
-[ext_resource type="AudioStream" uid="uid://tyaedehflfe5" path="res://_04-Platformer/assets/sounds/jump.wav" id="6_x3wgy"]
-[ext_resource type="AudioStream" uid="uid://b4drkwcdagjlc" path="res://_04-Platformer/assets/sounds/death.wav" id="7_3smsa"]
+[ext_resource type="AudioStream" uid="uid://c5kb4r42f1pg6" path="res://Art/Art/Background/option-2-from-the-ground.mp3" id="6_x3wgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
 atlas = ExtResource("1_hqtel")
@@ -343,7 +342,7 @@ texture_filter = 1
 position = Vector2(221.22592, 301.48404)
 scale = Vector2(1.2820909, 1.7185495)
 sprite_frames = SubResource("SpriteFrames_b88wv")
-animation = &"hit"
+animation = &"jump"
 autoplay = "run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=952838078]
@@ -354,4 +353,3 @@ shape = SubResource("RectangleShape2D_fkybt")
 stream = ExtResource("6_x3wgy")
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=2068377045]
-stream = ExtResource("7_3smsa")

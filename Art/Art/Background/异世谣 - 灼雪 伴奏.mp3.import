@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ch55hvvgdbv37"
+path="res://.godot/imported/异世谣 - 灼雪 伴奏.mp3-454b03624b9bfaae91725dbdcabbae4a.mp3str"
+
+[deps]
+
+source_file="res://Art/Art/Background/异世谣 - 灼雪 伴奏.mp3"
+dest_files=["res://.godot/imported/异世谣 - 灼雪 伴奏.mp3-454b03624b9bfaae91725dbdcabbae4a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

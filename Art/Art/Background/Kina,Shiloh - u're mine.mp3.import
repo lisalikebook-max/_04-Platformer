@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnq73gqttj6y0"
+path="res://.godot/imported/Kina,Shiloh - u're mine.mp3-3a1191e3d598070f90bd54df1d2bac17.mp3str"
+
+[deps]
+
+source_file="res://Art/Art/Background/Kina,Shiloh - u're mine.mp3"
+dest_files=["res://.godot/imported/Kina,Shiloh - u're mine.mp3-3a1191e3d598070f90bd54df1d2bac17.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://76p0g762i764" path="res://Scenes/apple.tscn" id="5_mn87n"]
 [ext_resource type="Texture2D" uid="uid://ducxuq2qkleq8" path="res://Art/Items/Checkpoints/Checkpoint/Checkpoint (Flag Idle)(64x64).png" id="6_4ve4b"]
 [ext_resource type="PackedScene" uid="uid://dkbfsfr0uo31v" path="res://Scenes/moving_platform.tscn" id="7_ckw4o"]
+[ext_resource type="AudioStream" uid="uid://blv74euwgj5bh" path="res://Art/Art/Background/怪心idgg - 恐怖音乐.mp3" id="8_gyxvk"]
+[ext_resource type="Script" uid="uid://xu06feu1go0y" path="res://Scenes/audio_stream_player_2d.gd" id="9_wj7o5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ndhg3"]
 texture = ExtResource("3_gyxvk")
@@ -446,3 +448,7 @@ position = Vector2(425, 480)
 
 [node name="MovingPlatform2" parent="." unique_id=1884249146 instance=ExtResource("7_ckw4o")]
 position = Vector2(513, 260)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=238562780]
+stream = ExtResource("8_gyxvk")
+script = ExtResource("9_wj7o5")
