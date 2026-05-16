@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1rnt18ma4m2x"
+path="res://.godot/imported/oceanframemusic-horror-intense-524521 (1).mp3-456c735a37ff39016f101463b30b9544.mp3str"
+
+[deps]
+
+source_file="res://Art/Art/Background/oceanframemusic-horror-intense-524521 (1).mp3"
+dest_files=["res://.godot/imported/oceanframemusic-horror-intense-524521 (1).mp3-456c735a37ff39016f101463b30b9544.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dytljtg2bbhuq"
+path="res://.godot/imported/scring sound effect.mp3-87bfa2c31e80b7c7bfb57a6f595edba8.mp3str"
+
+[deps]
+
+source_file="res://Art/Art/Background/scring sound effect.mp3"
+dest_files=["res://.godot/imported/scring sound effect.mp3-87bfa2c31e80b7c7bfb57a6f595edba8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

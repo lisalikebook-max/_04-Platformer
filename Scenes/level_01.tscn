@@ -399,7 +399,7 @@ stretch_mode = 1
 
 [node name="Player" parent="." unique_id=148824676 instance=ExtResource("1_ndhg3")]
 texture_filter = 1
-position = Vector2(-158, 155)
+position = Vector2(-273, -130)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=297454679]
 scale = Vector2(3, 3)
@@ -417,22 +417,22 @@ position = Vector2(475, 574)
 [node name="Apples" type="Node2D" parent="." unique_id=2010572427]
 
 [node name="Apple" parent="Apples" unique_id=482916234 instance=ExtResource("5_rix17")]
-position = Vector2(859, 341)
+position = Vector2(704, 162)
 
 [node name="Apple2" parent="Apples" unique_id=1171792412 instance=ExtResource("5_rix17")]
-position = Vector2(606, 393)
+position = Vector2(391, 8)
 
 [node name="Apple3" parent="Apples" unique_id=1384472634 instance=ExtResource("5_rix17")]
-position = Vector2(981, 342)
+position = Vector2(429, 130)
 
 [node name="Apple4" parent="Apples" unique_id=767129972 instance=ExtResource("5_rix17")]
-position = Vector2(608, 588)
+position = Vector2(545, 193)
 
 [node name="Apple5" parent="Apples" unique_id=591010378 instance=ExtResource("5_rix17")]
-position = Vector2(755, 493)
+position = Vector2(809, 54)
 
 [node name="Apple6" parent="Apples" unique_id=375138557 instance=ExtResource("5_rix17")]
-position = Vector2(181, 338)
+position = Vector2(232, 252)
 
 [node name="Flag" type="AnimatedSprite2D" parent="." unique_id=288822363]
 texture_filter = 1

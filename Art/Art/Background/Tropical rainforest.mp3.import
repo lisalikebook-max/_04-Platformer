@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ci4333snffh2a"
+path="res://.godot/imported/Tropical rainforest.mp3-11ee5f741e8d6a991d64dd37ecfe9efb.mp3str"
+
+[deps]
+
+source_file="res://Art/Art/Background/Tropical rainforest.mp3"
+dest_files=["res://.godot/imported/Tropical rainforest.mp3-11ee5f741e8d6a991d64dd37ecfe9efb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

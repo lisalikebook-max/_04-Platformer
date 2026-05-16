@@ -3,4 +3,4 @@ extends AudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	play(200.83)
+	play(200.38)

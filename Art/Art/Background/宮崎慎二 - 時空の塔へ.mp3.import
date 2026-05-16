@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b15kqkwwm8aff"
+path="res://.godot/imported/宮崎慎二 - 時空の塔へ.mp3-2eb9f6d3e3439fb2c2c187909bb2b8b3.mp3str"
+
+[deps]
+
+source_file="res://Art/Art/Background/宮崎慎二 - 時空の塔へ.mp3"
+dest_files=["res://.godot/imported/宮崎慎二 - 時空の塔へ.mp3-2eb9f6d3e3439fb2c2c187909bb2b8b3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
